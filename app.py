@@ -10,7 +10,7 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         self.ui = Ui_ND()
         self.ui.setupUi(self)
-        self.setWindowTitle("ПС Нейтрализационный диализ")
+        self.setWindowTitle("Оптимизация начальных параметров нейтрализационного диализа")
 
         # обработчик событий
         self.ui.pushButton.clicked.connect(self.button_listener)
@@ -39,19 +39,19 @@ class MainWindow(QMainWindow):
         self.ui.output1.clear()
         self.ui.output2.clear()
         self.ui.output1.append("Выбраны следующие начальные параметры:")
-        self.ui.output1.append("Концентрация NaCl: " + str(float_input[0]))
+        self.ui.output1.append("\nКонцентрация NaCl: " + str(float_input[0]))
         self.ui.output1.append("Концентрация HCl: от " + str(float_input[1]) + " до " + str(float_input[2]))
         self.ui.output1.append("Концентрация NaOH: от " + str(float_input[3]) + " до " + str(float_input[4]))
         self.ui.output1.append("Толщина DBL: от " + str(float_input[5]) + " до " + str(float_input[6]))
         if bool_input[0]:
-            self.ui.output1.append("Метод моделирования: нейросетевой")
+            self.ui.output1.append("\nМетод моделирования: нейросетевой")
         else:
-            self.ui.output1.append("Метод моделирования: численный")
+            self.ui.output1.append("\nМетод моделирования: численный")
 
         if (bool_input[1]):
-            self.ui.output1.append("Метод оптимизации: отжиг Больцмана")
+            self.ui.output1.append("\nМетод оптимизации: отжиг Больцмана")
         else:
-            self.ui.output1.append("Метод оптимизации: быстрый спуск")
+            self.ui.output1.append("\nМетод оптимизации: быстрый спуск")
 
         self.ui.pushButton.setText("Обработка")
         self.ui.pushButton.setEnabled(False)
@@ -59,6 +59,7 @@ class MainWindow(QMainWindow):
 
         output1, output2 = main(float_input, bool_input)
 
+        self.ui.output1.append("\n")
         self.ui.output1.append(output1)
         self.ui.output2.append(output2)
 

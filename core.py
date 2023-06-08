@@ -517,7 +517,7 @@ def execute(xMin, yMin):
     y = np.zeros(4)
     nodes = 4
     if (useNN):
-        nodes = 8
+        nodes = 6
     print("Число узлов: ", pow(nodes, 3))
     x[0] = cNaCl
     xMin[0] = x[0]
